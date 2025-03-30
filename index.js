@@ -6,6 +6,7 @@ const Product = require("./Models/Product");
 const Signup = require("./Models/Signup");
 const Signin = require("./Models/Signin");
 app.use(express.json());
+require("dotenv").config();
 
 app.get("/about", (req, res) => {
   res.send("Hello World!!!!!!!!!!!!!!!!");
@@ -106,7 +107,7 @@ app.listen(port, () => {
 });
 
 mongoose
-  .connect("mongodb+srv://Sharan:sharan%4016@ecommerce.mvhxlmj.mongodb.net/")
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to mongodb");
   })
